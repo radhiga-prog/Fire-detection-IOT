@@ -1,39 +1,110 @@
-#include <DHT.h>
+🌲🔥 Forest Fire Detection Using IoT – Overview
 
-#define DHTPIN 2        // DHT sensor pin
-#define DHTTYPE DHT11   // Or DHT22
-DHT dht(DHTPIN, DHTTYPE);
+Forest Fire Detection using IoT is a smart system that uses sensors, microcontrollers, and the internet to detect forest fires early and alert authorities in real time, helping to reduce damage to life, wildlife, and the environment.
 
-int smokeSensor = A0;   // MQ-2 analog pin
-int buzzer = 8;         // Buzzer pin
-int led = 7;            // LED pin
 
-void setup() {
-  Serial.begin(9600);
-  dht.begin();
-  pinMode(smokeSensor, INPUT);
-  pinMode(buzzer, OUTPUT);
-  pinMode(led, OUTPUT);
-}
 
-void loop() {
-  float temp = dht.readTemperature();
-  int smokeLevel = analogRead(smokeSensor);
+🔧 Key Components
 
-  Serial.print("Temperature: ");
-  Serial.print(temp);
-  Serial.print(" °C | Smoke Level: ");
-  Serial.println(smokeLevel);
+1. Sensors
 
-  // Fire detection condition
-  if (temp > 45 || smokeLevel > 300) {
-    digitalWrite(buzzer, HIGH);
-    digitalWrite(led, HIGH);
-    Serial.println("🔥 FIRE ALERT!");
-  } else {
-    digitalWrite(buzzer, LOW);
-    digitalWrite(led, LOW);
-  }
+Temperature sensor – detects abnormal heat
 
-  delay(1000);
-}
+Smoke/Gas sensor (MQ-2/MQ-135) – detects smoke or harmful gases
+
+Flame sensor – detects fire flames
+
+Humidity sensor – low humidity indicates higher fire risk
+
+
+
+2. Microcontroller
+
+Arduino / ESP8266 / ESP32
+
+Collects data from sensors and processes it
+
+
+
+3. Communication Module
+
+Wi-Fi / GSM / LoRa
+
+Sends data to cloud or authorities
+
+
+
+4. Cloud Platform
+
+ThingSpeak / Firebase / AWS IoT
+
+Stores data and shows real-time monitoring
+
+
+
+5. Alert System
+
+SMS, mobile app notification, email, or alarm
+
+
+
+
+
+⚙️ Working Principle
+
+1. Sensors continuously monitor forest conditions
+
+
+2. If temperature rises or smoke is detected beyond a threshold
+
+
+3. The microcontroller identifies fire risk
+
+
+4. Data is sent to cloud via internet
+
+
+5. Alerts are sent instantly to forest officials
+
+
+
+
+✅ Advantages
+
+Early fire detection
+
+Real-time monitoring
+
+Reduces human effort
+
+Low cost and scalable
+
+Protects environment and wildlife
+
+
+
+🚫 Limitations
+
+Depends on internet connectivity
+
+Sensor damage due to harsh weather
+
+Power supply issues in remote areas
+
+
+
+🌍 Applications
+
+Forest fire monitoring
+
+Wildlife reserves
+
+National parks
+
+Agriculturalprotection 
+
+
+🧠 Conclusion
+
+IoT-based forest fire detection systems provide a smart, efficient, and reliable solution for early fire detection. They help prevent large-scale disasters and support environmental protection.
+
